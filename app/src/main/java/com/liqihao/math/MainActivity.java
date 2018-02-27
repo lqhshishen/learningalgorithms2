@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         int [] arr = new int []{1,1,2};
-        Log.e("test", String.valueOf(removeDuplicates(arr)));
+        Log.e("test", String.valueOf(reverse(1534236469)));
+
 
 //        quickSort(arr,0,arr.length - 1);
 ////        heapSort(arr);
@@ -132,6 +133,28 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < result.length; i++) {
             result[i] = temp.get(i);
         }
+        return result;
+    }
+
+    ///Reverse Integer
+    public int reverse(int x) {
+        boolean zhengOrFu = false;
+        int result = 0;
+        if (x < 0) {
+            zhengOrFu = true;
+            x *= -1;
+        }
+        while (x != 0 ) {
+            int newResult = result;
+            result = (x % 10) + (result * 10);
+            Log.e("testResult", String.valueOf(result));
+            if (result / 10 != newResult )
+                return 0;
+            x /= 10;
+            Log.e("testX", String.valueOf(x));
+        }
+        if (zhengOrFu)
+            result *= -1;
         return result;
     }
 
