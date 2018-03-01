@@ -16,8 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        int [] arr = new int []{1,1,2};
-        isPalindrome(-2147483648);
+        int [] arr = new int []{1,3,5,6};
+        String a = "";
+        String aa = "";
+//        isPalindrome(-2147483648);
+//        strStr(a,aa);
+        Log.e("testStr", String.valueOf(searchInsert(arr,5)));
 //        Log.e("test", String.valueOf(isPalindrome(-2147483648)));
 
 
@@ -243,5 +247,45 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return result;
+    }
+
+    //Implement strStr()
+    public int strStr(String haystack, String needle) {
+        boolean x = false;
+        if (needle.isEmpty()) return 0;
+        for (int i = 0; i < haystack.length(); i++) {
+            for (int j = 0; j < needle.length(); j++) {
+                if (i + j >= haystack.length()) return -1;
+                if (haystack.charAt(i + j) != needle.charAt(j)) {
+                    x = false;
+                    break;
+                } else x = true;
+            }
+            if (x) return i;
+        }
+        return -1;
+    }
+
+    //Search Insert Position
+    public int searchInsert(int[] nums, int target) {
+        int result = 0;
+        if (target > nums[nums.length - 1]) return nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            if (target <= nums[i]) return i;
+        }
+        return result;
+    }
+    //Maximum Subarray
+    public int maxSubArray(int[] nums) {
+        int max = nums[0],temp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
+                for (int n = i;n < j;n ++) {
+                    temp += nums[n];
+                }
+                if (temp > max) max = temp;
+            }
+        }
+        return max;
     }
 }
